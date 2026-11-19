@@ -3,20 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Vice Cover Maker — GTA-style cover art</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+  <section class="controls" aria-label="Editor">
+    <h1>VICE COVER <span>MAKER</span></h1>
+    <p class="tagline">Turn your photo and a caption into GTA-style multi-panel cover art. Photos stay on your machine — nothing is uploaded.</p>
+
+    <fieldset>
+      <legend>1 · Photos</legend>
+      <label class="file-label">Add your photos
+        <input id="photos" type="file" accept="image/*" multiple>
+      </label>
+      <div class="row">
+        <button id="sample-boulevard" type="button">Sample: Boulevard</button>
+        <button id="sample-pier" type="button">Sample: Pier</button>
+      </div>
+      <p class="hint" id="photo-status">No photo yet — load a sample or add your own.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Panel layout</legend>
+      <div class="row layouts" id="layouts">
+        <button type="button" data-layout="split" class="layout-btn active" aria-label="Split layout">▟ Split</button>
+        <button type="button" data-layout="triptych" class="layout-btn" aria-label="Triptych layout">▤ Triptych</button>
+        <button type="button" data-layout="hero" class="layout-btn" aria-label="Hero layout">▧ Hero</button>
+        <button type="button" data-layout="quad" class="layout-btn" aria-label="Quad layout">▦ Quad</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · One panel</legend>
+      <div class="row">
+        <label>Panel
+          <select id="panel-select"></select>
+        </label>
+        <label>Photo
+          <select id="panel-photo">
+            <option value="a">Photo A</option>
+            <option value="b">Photo B</option>
+          </select>
+        </label>
+      </div>
+      <label>Zoom <input id="panel-zoom" type="range" min="1" max="2.5" step="0.05" value="1"></label>
+      <label>Move left–right <input id="panel-x" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <label>Move up–down <input id="panel-y" type="range" min="-1" max="1" step="0.05" value="0"></label>
+      <button id="fill-all" type="button">Use Photo A in every panel</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Words &amp; grade</legend>
+      <label>Caption <input id="caption" type="text" maxlength="28" value="VICE NIGHTS"></label>
+      <label>Sub-caption <input id="subcaption" type="text" maxlength="40" value="SUNSET HEIST · EST. 2026"></label>
+      <div class="row grades" id="grades">
+        <button type="button" data-grade="sunset" class="grade-btn active" style="--g1:#ff7a18;--g2:#ff2d78">Sunset</button>
+        <button type="button" data-grade="neon" class="grade-btn" style="--g1:#00f0ff;--g2:#ff00a8">Neon</button>
+        <button type="button" data-grade="dusk" class="grade-btn" style="--g1:#7b2ff7;--g2:#ff5e62">Dusk</button>
+        <button type="button" data-grade="noir" class="grade-btn" style="--g1:#8a8a8a;--g2:#1a1a1a">Noir</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>5 · Export</legend>
+      <div class="row sizes" id="sizes">
+        <button type="button" data-size="1080x1080" class="size-btn active">1080 × 1080</button>
+        <button type="button" data-size="1080x1350" class="size-btn">1080 × 1350</button>
+        <button type="button" data-size="1920x1080" class="size-btn">1920 × 1080</button>
+      </div>
+      <button id="export" type="button" class="export-btn">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
+
+  <section class="preview" aria-label="Live preview">
+    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
+    <p class="preview-note">Live preview — what you see is what the PNG will be.</p>
+  </section>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>

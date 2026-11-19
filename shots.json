@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+[{"h":720,"name":"1-cover-wide.jpg","query":"?shot=cover&photo=pier&caption=Vice%20Nights&subcaption=Sunset%20Heist%20%C2%B7%20Est.%202026&layout=split&grade=sunset&size=1920x1080","w":1280},{"h":720,"name":"2-editor.jpg","query":"?shot=editor&photo=boulevard&caption=Boulevard%20Queen&subcaption=Neon%20Drive%20%C2%B7%20Vice%20Nights&layout=split&grade=neon&size=1080x1080","w":1280},{"h":1024,"name":"3-cover-square.jpg","query":"?shot=cover&photo=boulevard&caption=Boulevard%20Queen&subcaption=Neon%20Drive%20%C2%B7%20Vice%20Nights&layout=triptych&grade=neon&size=1080x1080","w":1024},{"h":1280,"name":"4-cover-portrait.jpg","query":"?shot=cover&photo=pier&caption=Last%20Sunset&subcaption=One%20More%20Ride%20%C2%B7%202026&layout=quad&grade=dusk&size=1080x1350","w":1024}]
